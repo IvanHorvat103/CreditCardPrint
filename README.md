@@ -1,6 +1,7 @@
 # CreditCardPrint
 
 API za zapisivanje, brisanje i ispis osoba sa kreditnim karticama u potrebe za print. 
+Datoteke od kartica se zapisuju u root direktorij od projekta formata OIB_TimeStamp npr. 12345612345_20231031111157.txt
 
 # API koristi sljedeće tehnologije
 
