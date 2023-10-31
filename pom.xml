@@ -11,7 +11,7 @@
 	<artifactId>CreditCardPrint</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CreditCardPrint</name>
-	<description>test project forRBA</description>
+	<description>test project for RBA</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

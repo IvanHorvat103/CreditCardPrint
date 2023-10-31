@@ -12,23 +12,23 @@ import java.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import hr.test.CreditCardPrint.domain.Osoba;
+import hr.test.CreditCardPrint.domain.CreditCard;
 
 public class FileIOUtility {
 	private static final String DELIMITER = "|";
 	private static final Logger log = LoggerFactory.getLogger(FileIOUtility.class);
-    public static void writeOsobaToFile(Osoba osoba) {
-    	log.info("Printing osoba to file:" + osoba.toString());
+    public static void writeCreditCardToFile(CreditCard creditCard) {
+    	log.info("Printing Credit card to file:" + creditCard.toString());
     	String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-        String fileName = osoba.getOib() + "_" + timestamp + ".txt";
+        String fileName = creditCard.getOib() + "_" + timestamp + ".txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            // Write the Osoba object's attributes to the file with '|' delimiter
-            writer.write(osoba.getIme() + DELIMITER + osoba.getPrezime() + DELIMITER + osoba.getOib() + DELIMITER + osoba.isStatus());
+            // Write the credit card object's attributes to the file with '|' delimiter
+            writer.write(creditCard.getIme() + DELIMITER + creditCard.getPrezime() + DELIMITER + creditCard.getOib() + DELIMITER + creditCard.isStatus());
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        log.info("Printing osoba to file successfull");
+        log.info("Printing credit card to file successfull");
     }
     
     public static void changeStatusInFilesByOib(String oib) throws IOException {

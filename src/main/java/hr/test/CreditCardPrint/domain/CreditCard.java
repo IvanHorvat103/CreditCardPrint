@@ -18,8 +18,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "osoba")
-public class Osoba {
+@Table(name = "credit_card")
+public class CreditCard {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -36,11 +36,11 @@ public class Osoba {
     private LocalDateTime createdTimestamp;
 	
 	
-	public Osoba() {
+	public CreditCard() {
 		this.createdTimestamp = LocalDateTime.now();
 	}
 
-	public Osoba( String ime, String prezime, String oib) {
+	public CreditCard( String ime, String prezime, String oib) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.oib = oib;

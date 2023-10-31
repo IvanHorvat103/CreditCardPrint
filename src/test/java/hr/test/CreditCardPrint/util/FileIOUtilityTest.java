@@ -1,6 +1,6 @@
 package hr.test.CreditCardPrint.util;
 
-import hr.test.CreditCardPrint.domain.Osoba;
+import hr.test.CreditCardPrint.domain.CreditCard;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -21,30 +21,30 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FileIOUtilityTest {
 
     @Test
-    public void testWriteOsobaToFile() throws IOException {
+    public void testWriteCreditCardToFile() throws IOException {
         // Create a temporary test directory for file output
         String testDir = "test-output";
 
         // Mock the Osoba object
-        Osoba osoba = new Osoba();
-        osoba.setIme("Ivan");
-        osoba.setPrezime("Horvat");
-        osoba.setOib("32132132112");
-        osoba.setStatus(true);
+        CreditCard creditCard = new CreditCard();
+        creditCard.setIme("Ivan");
+        creditCard.setPrezime("Horvat");
+        creditCard.setOib("32132132112");
+        creditCard.setStatus(true);
 
         // Mock LocalDateTime and set a fixed timestamp
-        LocalDateTime fixedTimestamp = osoba.getCreatedTimestamp();
+        LocalDateTime fixedTimestamp = creditCard.getCreatedTimestamp();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
         // Call the method
-        FileIOUtility.writeOsobaToFile(osoba);
+        FileIOUtility.writeCreditCardToFile(creditCard);
 
         // Verify the file content
         String expectedContent = "Ivan|Horvat|32132132112|true";
         String timestamp = fixedTimestamp.format(formatter);
-        String expectedFileName = osoba.getOib() + "_" + timestamp + ".txt";
+        String expectedFileName = creditCard.getOib() + "_" + timestamp + ".txt";
 
-        String fileContent = readFromFileByOib(osoba.getOib());
+        String fileContent = readFromFileByOib(creditCard.getOib());
         assertNotNull(fileContent);
         assertEquals(expectedContent, fileContent);
 
