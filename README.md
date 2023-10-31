@@ -19,9 +19,9 @@ API za zapisivanje, brisanje i ispis osoba sa kreditnim karticama u potrebe za p
 | DELETE | /deletecreditcard/{oib} | Brisanje postojeće kartice i invalidacija postojećih zapisa u datoteci | oib |
 
 U slučaju pozivanja bilo koijh od API endpointova 
-	- sve kartice koje su vezane na oib (koji se stvara novi, briše ili dohvaća) status u datotekama se mjenja u false, što bi značilo da više nisu aktivne.
+	- sve kartice koje su vezane na oib (ako se stvara novi zapis, briše ili dohvaća) status u datotekama se mjenja u false, što bi značilo da više nisu aktivne.
 
-#Korisne komande za testiranje API:
+# Korisne komande za testiranje API:
 
   *  curl -X POST "http://localhost:8080/createnew" -d "ime=Ivan" -d "prezime=Horvat" -d "oib=12345612345"
   *  curl -X GET "http://localhost:8080/creditcard/12345612345"
