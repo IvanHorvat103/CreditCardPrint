@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.util.exception;
+package hr.rba.CreditCardPrint.util.exception;
 
 public class CreditCardNotFoundException extends RuntimeException {
     /**

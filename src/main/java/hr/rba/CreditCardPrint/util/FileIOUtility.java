@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.util;
+package hr.rba.CreditCardPrint.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import hr.test.CreditCardPrint.domain.CreditCard;
+import hr.rba.CreditCardPrint.domain.CreditCard;
 
 public class FileIOUtility {
 	private static final String DELIMITER = "|";

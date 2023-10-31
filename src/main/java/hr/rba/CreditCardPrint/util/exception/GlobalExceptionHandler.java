@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.util.exception;
+package hr.rba.CreditCardPrint.util.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

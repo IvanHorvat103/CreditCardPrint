@@ -1,11 +1,11 @@
-package hr.test.CreditCardPrint;
+package hr.rba.CreditCardPrint;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan("hr.test.CreditCardPrint.domain")
+@EntityScan("hr.rba.CreditCardPrint.domain")
 public class CreditCardPrintApplication {
 
 	public static void main(String[] args) {

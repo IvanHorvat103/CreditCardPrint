@@ -1,20 +1,16 @@
 package hr.test.CreditCardPrint.util;
 
-import hr.test.CreditCardPrint.domain.CreditCard;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
+import hr.rba.CreditCardPrint.domain.CreditCard;
+import hr.rba.CreditCardPrint.util.FileIOUtility;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 import static org.junit.jupiter.api.Assertions.*;
 

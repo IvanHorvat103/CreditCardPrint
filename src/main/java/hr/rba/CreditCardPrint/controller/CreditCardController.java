@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.controller;
+package hr.rba.CreditCardPrint.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import hr.test.CreditCardPrint.domain.CreditCard;
-import hr.test.CreditCardPrint.repository.CreditCardRepository;
-import hr.test.CreditCardPrint.util.FileIOUtility;
-import hr.test.CreditCardPrint.util.exception.CreditCardNotFoundException;
+import hr.rba.CreditCardPrint.domain.CreditCard;
+import hr.rba.CreditCardPrint.repository.CreditCardRepository;
+import hr.rba.CreditCardPrint.util.FileIOUtility;
+import hr.rba.CreditCardPrint.util.exception.CreditCardNotFoundException;
 
 @RestController
 public class CreditCardController {
@@ -56,10 +56,10 @@ public class CreditCardController {
 	    }
 	    // Create and save the new credit card
 		CreditCard newCreditCard = new CreditCard(ime,prezime,oib);
-        if (newCreditCard != null) {
-        	
+        if (newCreditCard != null) {        	
         	//save credit card
         	repository.save(newCreditCard);
+        	log.info("Credit card saved to database: {}",newCreditCard.toString());
         	// HTTP 200 OK
             return ResponseEntity.ok(newCreditCard);  
         } 
@@ -71,11 +71,13 @@ public class CreditCardController {
 	@GetMapping("/creditcard/{oib}")
 	public ResponseEntity<CreditCard> getCreditCard(@PathVariable String oib) {	
 		log.info("Getting credit card from database with OIB: " + oib);
-		CreditCard creditCard = repository.findTopByOibOrderByCreatedTimestampDesc(oib);
-	    if (creditCard == null) {
-	        throw new CreditCardNotFoundException(oib);
-	    }
-	    
+		//Checking if credit card exists in database, 
+		//if it does it sets status to false for existing cards on file for that OIB
+		CreditCard creditCard = repository.findTopByOibOrderByCreatedTimestampDesc(oib);	
+		if(creditCard == null) {			 
+        	log.warn("Credit card not found in database.");
+        	throw new CreditCardNotFoundException(oib);		        
+		}
 	    //Change status to false for chosen OIB 
 	    try {
 			FileIOUtility.changeStatusInFilesByOib(oib);
@@ -83,12 +85,12 @@ public class CreditCardController {
 			log.error("An exception occurred while changing status in file for OIB: " + oib, e);
 		}
 		FileIOUtility.writeCreditCardToFile(creditCard);
-		CreditCard newCreditCard = repository.findTopByOibOrderByCreatedTimestampDesc(oib);
-        if (newCreditCard != null) {
-            return ResponseEntity.ok(newCreditCard);  // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build();  // HTTP 404 Not Found
+        if (creditCard != null) {
+        	log.info("Credit card fetched from database: {}", creditCard.toString());
+        	// HTTP 200 OK
+            return ResponseEntity.ok(creditCard);  
         }
+        return ResponseEntity.notFound().build();
 	}
 	
 	  //delete credit card and change status in file of oib to false (inactive)

@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.domain;
+package hr.rba.CreditCardPrint.domain;
 
 import java.time.Clock;
 import java.time.Instant;

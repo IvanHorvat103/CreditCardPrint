@@ -1,4 +1,4 @@
-package hr.test.CreditCardPrint.repository;
+package hr.rba.CreditCardPrint.repository;
 
 import java.io.IOException;
 import org.slf4j.Logger;
@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import hr.test.CreditCardPrint.domain.CreditCard;
+import hr.rba.CreditCardPrint.domain.CreditCard;
 
 @Configuration
 public class LoadDatabase {

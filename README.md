@@ -23,6 +23,6 @@ U slučaju pozivanja bilo koijh od API endpointova
 
 # Korisne komande za testiranje API:
 
-  *  curl -X POST "http://localhost:8080/createnew" -d "ime=Ivan" -d "prezime=Horvat" -d "oib=12345612345"
+  *  curl -X POST "http://localhost:8080/newcreditcard" -d "ime=Ivan" -d "prezime=Horvat" -d "oib=12345612345"
   *  curl -X GET "http://localhost:8080/creditcard/12345612345"
   *  curl -X DELETE "http://localhost:8080/deletecreditcard/12345612345

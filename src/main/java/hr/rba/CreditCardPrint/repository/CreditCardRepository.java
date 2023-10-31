@@ -1,10 +1,10 @@
-package hr.test.CreditCardPrint.repository;
+package hr.rba.CreditCardPrint.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import hr.test.CreditCardPrint.domain.CreditCard;
+import hr.rba.CreditCardPrint.domain.CreditCard;
 
 public interface CreditCardRepository extends JpaRepository<CreditCard,Long> {
 	List<CreditCard> findByIme(String ime);
