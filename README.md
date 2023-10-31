@@ -2,7 +2,7 @@
 
 API za zapisivanje, brisanje i ispis osoba sa kreditnim karticama u potrebe za print. 
 
-# API koristi sljedće tehnologije
+# API koristi sljedeće tehnologije
 
 * Java - 17
 * PostgreSQL 14.5
@@ -15,7 +15,7 @@ API za zapisivanje, brisanje i ispis osoba sa kreditnim karticama u potrebe za p
 | Method | Url | Parametars |
 | ------ | --- | ----------- |
 | POST | /newcreditcard | Stvara novu karticu za osobu | ime, prezime, oib |
-| GET | /creditcard/{oib} | Dohvaćanje postojeće kartice, i ispis u datoteku | oib |
+| GET | /creditcard/{oib} | Dohvaćanje postojeće kartice i ispis u datoteku | oib |
 | DELETE | /deletecreditcard/{oib} | Brisanje postojeće kartice i invalidacija postojećih zapisa u datoteci | oib |
 
 U slučaju pozivanja bilo koijh od API endpointova 
