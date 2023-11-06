@@ -26,7 +26,7 @@ public class CreditCardController {
 	@Autowired
 	private final CreditCardRepository repository;
 	private static final Logger log = LoggerFactory.getLogger(CreditCardController.class);
-	
+	private static final String CREDIT_CARD_DIRECTORY = "credit-card-directory";
 	public CreditCardController(CreditCardRepository repository) {
 		super();
 		this.repository = repository;
@@ -49,7 +49,7 @@ public class CreditCardController {
 		    
 		    //Change status to false for chosen OIB 
 		    try {
-				FileIOUtility.changeStatusInFilesByOib(oib);
+				FileIOUtility.changeStatusInFilesByOib(oib,CREDIT_CARD_DIRECTORY);
 			} catch (IOException e) {
 				log.error("An exception occurred while changing status in file for OIB: " + oib, e);
 			}
@@ -80,11 +80,11 @@ public class CreditCardController {
 		}
 	    //Change status to false for chosen OIB 
 	    try {
-			FileIOUtility.changeStatusInFilesByOib(oib);
+			FileIOUtility.changeStatusInFilesByOib(oib,CREDIT_CARD_DIRECTORY);
 		} catch (IOException e) {
 			log.error("An exception occurred while changing status in file for OIB: " + oib, e);
 		}
-		FileIOUtility.writeCreditCardToFile(creditCard);
+		FileIOUtility.writeCreditCardToFile(creditCard,CREDIT_CARD_DIRECTORY);
         if (creditCard != null) {
         	log.info("Credit card fetched from database: {}", creditCard.toString());
         	// HTTP 200 OK
@@ -102,7 +102,7 @@ public class CreditCardController {
 	    
 	    //Change status to false for chosen OIB 
 	    try {
-			FileIOUtility.changeStatusInFilesByOib(oib);
+			FileIOUtility.changeStatusInFilesByOib(oib,CREDIT_CARD_DIRECTORY);
 		} catch (IOException e) {
 			log.error("An exception occurred while changing status in file for OIB: " + oib, e);
 		}

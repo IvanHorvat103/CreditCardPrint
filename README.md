@@ -1,7 +1,7 @@
 # CreditCardPrint
 
 API za zapisivanje, brisanje i ispis osoba sa kreditnim karticama u potrebe za print. 
-Datoteke od kartica se zapisuju u root direktorij od projekta formata OIB_TimeStamp npr. 12345612345_20231031111157.txt
+Datoteke od kartica se zapisuju u credit-card-directory direktorij od projekta formata OIB_TimeStamp npr. 12345612345_20231031111157.txt
 
 # API koristi sljedeće tehnologije
 
@@ -26,4 +26,4 @@ U slučaju pozivanja bilo koijh od API endpointova
 
   *  curl -X POST "http://localhost:8080/newcreditcard" -d "ime=Ivan" -d "prezime=Horvat" -d "oib=12345612345"
   *  curl -X GET "http://localhost:8080/creditcard/12345612345"
-  *  curl -X DELETE "http://localhost:8080/deletecreditcard/12345612345
+  *  curl -X DELETE "http://localhost:8080/deletecreditcard/12345612345"

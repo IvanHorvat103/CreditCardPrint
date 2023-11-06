@@ -17,11 +17,15 @@ import hr.rba.CreditCardPrint.domain.CreditCard;
 public class FileIOUtility {
 	private static final String DELIMITER = "|";
 	private static final Logger log = LoggerFactory.getLogger(FileIOUtility.class);
-    public static void writeCreditCardToFile(CreditCard creditCard) {
+	
+    public static void writeCreditCardToFile(CreditCard creditCard, String directoryPath) {
     	log.info("Printing Credit card to file:" + creditCard.toString());
     	String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
         String fileName = creditCard.getOib() + "_" + timestamp + ".txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        File directory = createNewDirectory(directoryPath);
+        
+        File file = new File(directory, fileName);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             // Write the credit card object's attributes to the file with '|' delimiter
             writer.write(creditCard.getIme() + DELIMITER + creditCard.getPrezime() + DELIMITER + creditCard.getOib() + DELIMITER + creditCard.isStatus());
             writer.newLine();
@@ -31,8 +35,8 @@ public class FileIOUtility {
         log.info("Printing credit card to file successfull");
     }
     
-    public static void changeStatusInFilesByOib(String oib) throws IOException {
-        File directory = new File(System.getProperty("user.dir"));
+    public static void changeStatusInFilesByOib(String oib,String directoryPath) throws IOException {
+    	File directory = createNewDirectory(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.startsWith(oib + "_"));
 
         if (files != null && files.length > 0) {
@@ -62,5 +66,13 @@ public class FileIOUtility {
                 }
             }
         }
+    }
+    
+    private static File createNewDirectory(String directoryPath) {
+    	File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create the directory if it doesn't exist
+        }
+		return directory;
     }
 }
